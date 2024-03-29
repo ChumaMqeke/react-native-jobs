@@ -1,14 +1,48 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import { useState } from 'react';
+import {
+   View, Text, TouchableOpacity, FlatList, ActivityIndicator } from
+ 'react-native';
+import { useRouter } from 'expo-router';
 
-import styles from './popularjobs.style'
+import styles from './popularjobs.style';
+import { COLORS, SIZES } from '../../../constants';
+import PopulaJobCard from '../../common/cards/popular/PopularJobCard';
 
 const Popularjobs = () => {
+  const router = useRouter();
+  const isLoading = false;
+  const error =false;
+
   return (
-    <View>
-      <Text>Popularjobs</Text>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Text style={styles.headerTitle}>Popular jobs</Text>
+          <TouchableOpacity>
+            <Text style={styles.headerBtn}>Show all</Text>
+          </TouchableOpacity>
+      </View>
+
+      <View style={styles.cardsContainer}>
+          {isLoading ? (
+           <ActivityIndicator size="large" colors={COLORS.primary} /> 
+          ) : error ? (
+            <Text>Something went wrong!</Text>
+          ) : (
+            <FlatList
+              data={[1, 2, 3, 4, 5, 7, 8, 9]} // number of job cards
+              renderItem={({ item }) => (   //Renders a data from the API
+                <PopulaJobCard 
+                   item={item}
+                />
+              )}
+              keyExtractor={item => item?.job_id} // pass the real data
+              contentContainerStyle={{ columnGap: SIZES.medium }}
+              horizontal
+            />
+          )}
+      </View>
     </View>
   )
 }
 
-export default Popularjobs
+export default Popularjobs;
