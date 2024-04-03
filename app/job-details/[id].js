@@ -1,4 +1,5 @@
-import { Stack, useRouter, useSearchParams } from 'expo-router';
+import { useRoute } from '@react-navigation/native';
+import {  Stack } from 'expo-router';
 import { Text,
     View,
     SafeAreaView,
@@ -17,12 +18,13 @@ import { COLORS, SIZES, icons } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
 const JobDetails = () => {
-const params = useSearchParams(); // This will allow you to get the specific ID of the job details page you are on.
-const router = useRouter();
+// This will allow you to get the specific ID of the job details page you are on.
+const route = useRoute();
+  const { id } = route.params;
 
 // Fetch job details
 const { data,  isLoading, error, refetch } = useFetch('job-details', {
- job_id: params.id
+ job_id: id
 })
 
 const [refreshing, setRefreshing] = useState(false);
