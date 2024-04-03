@@ -34,6 +34,9 @@ const Company = ({ companyLogo, jobTitle, companyName, location}) => {
                />
                <Text style={styles.locationName}>{location}</Text>
             </View>
+            <View style={styles.jobTitleBox}>
+        <Text style={styles.jobTitle}>{jobTitle}/</Text>
+      </View>
       </View>
     </View>
   )
