@@ -75,7 +75,7 @@ const onRefresh = () => {}
            
            <Company // Props
             companyLogo={data[0].employer_logo}
-            JobTitle={data[0].job_title}
+            jobTitle={data[0].job_title}
             companyName={data[0].employer_name}
             location={data[0].job_country}
            />
