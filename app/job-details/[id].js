@@ -46,6 +46,10 @@ const displayaTabContent = () => { //Active buttons function to display specific
           info={data[0].job_description ?? "No data provided"}
         />
     case "Responsibilities":
+      return <Specifics 
+      title="Qualifications"
+      points={data[0].job_highlights?.Responsibilities ?? ['N/A']}
+    />
    default:
     break;
   }
