@@ -33,12 +33,13 @@ const Welcome = () => {
           <TextInput
             //  value=''
              style={styles.searchInput}
-             onChange={() => {}}    //callback function
+             value={searchTerm}
+             onChange={(text) => setSearchTerm(text)}    //callback function
              placeholder='What are you looking for?'
           />
         </View>
 
-        <TouchableOpacity style={styles.searchBtn} onPress={() => {}}>
+        <TouchableOpacity style={styles.searchBtn} onPress={handleClick}>
           <Image 
             source={icons.search}
             resizeMode="contain"
@@ -55,7 +56,7 @@ const Welcome = () => {
               style={styles.tab(activeJobType, item)}
               onPress={() => {  // this will show the selected item (job type button)
                 setActiveJobType(item);
-                router.push('/search/${item}') // It will search through items
+                router.push(`/search/${item}`) // It will search through items
               }}
             >
               <Text style={styles.tabText(activeJobType, item)}>{ item }</Text>

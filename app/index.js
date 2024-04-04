@@ -4,8 +4,12 @@ import { Stack,useRouter } from 'expo-router';
 
 import { COLORS, icons, images, SIZES } from '../constants';
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
+
+
 const Home = () => {
     const router = useState();
+    const [searchTerm, setSearchTerm] = useState("")
+
 
     return (
          //  allows you to show the content safely without the buttons appearing over it
@@ -31,7 +35,13 @@ const Home = () => {
                 }}>
 
               <Welcome
-              
+                searchTerm={searchTerm}
+                setSearchTerm={setSearchTerm}
+                handleClick={() => {
+                    if(searchTerm) {
+                        router.push('/search/${searchTem}') // Renavigates to the search page
+                    }
+                }}
                />
 
               <Popularjobs />
