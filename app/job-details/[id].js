@@ -12,7 +12,7 @@ import { useCallback, useState } from 'react';
 
 // Local components 
 
-import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn 
+import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn, Specifics 
 } from '../../components';
 import { COLORS, SIZES, icons } from '../../constants';
 import useFetch from '../../hook/useFetch';
@@ -33,6 +33,23 @@ const [refreshing, setRefreshing] = useState(false);
 const [activeTab, setAtiveTab] = useState(tabs[0]);
 
 const onRefresh = () => {}
+
+const displayaTabContent = () => { //Active buttons function to display specific info.
+  switch (activeTab) {
+    case "Qualifications":
+      return <Specifics 
+        title="Qualifications"
+        points={data[0].job_highlights?.Qualifications ?? ['N/A']}
+      />
+    case "About":
+       return <JobAbout
+          info={data[0].job_description ?? "No data provided"}
+        />
+    case "Responsibilities":
+   default:
+    break;
+  }
+}
 
   return (
     // Styling the page in line..
@@ -88,7 +105,8 @@ const onRefresh = () => {}
              activeTab={activeTab}
              setAtiveTab={setAtiveTab}
            />
-
+              
+              {displayaTabContent()}
         </View>
       )
     }
