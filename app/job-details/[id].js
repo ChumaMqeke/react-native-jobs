@@ -32,7 +32,11 @@ const { data,  isLoading, error, refetch } = useFetch('job-details', {
 const [refreshing, setRefreshing] = useState(false);
 const [activeTab, setAtiveTab] = useState(tabs[0]);
 
-const onRefresh = () => {}
+const onRefresh = useCallback(() => {
+  setRefreshing(true);
+  refetch();
+  setRefreshing(false);
+}, [])
 
 const displayaTabContent = () => { //Active buttons function to display specific info.
   switch (activeTab) {

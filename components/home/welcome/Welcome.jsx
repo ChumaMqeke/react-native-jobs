@@ -34,7 +34,7 @@ const Welcome = () => {
             //  value=''
              style={styles.searchInput}
              value={searchTerm}
-             onChange={(text) => setSearchTerm(text)}    //callback function
+             onChangeText={(text) => setSearchTerm(text)}    //callback function
              placeholder='What are you looking for?'
           />
         </View>
