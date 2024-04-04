@@ -116,6 +116,12 @@ const displayaTabContent = () => { //Active buttons function to display specific
     }
 
     </ScrollView>
+
+    <JobFooter 
+      url={data[0]?.job_google_link ??
+         'https://careers.google.com/jobs/results'} // This will lead you to the job link 
+    />
+
     </>
      
    </SafeAreaView>
