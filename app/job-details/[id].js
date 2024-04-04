@@ -17,6 +17,8 @@ import { Company, JobAbout, JobFooter, JobTabs, ScreenHeaderBtn
 import { COLORS, SIZES, icons } from '../../constants';
 import useFetch from '../../hook/useFetch';
 
+const tabs = ["About", "Qualifications", "Responsibilities"];
+
 const JobDetails = () => {
 // This will allow you to get the specific ID of the job details page you are on.
 const route = useRoute();
@@ -28,6 +30,7 @@ const { data,  isLoading, error, refetch } = useFetch('job-details', {
 })
 
 const [refreshing, setRefreshing] = useState(false);
+const [activeTab, setAtiveTab] = useState(tabs[0]);
 
 const onRefresh = () => {}
 
@@ -81,7 +84,9 @@ const onRefresh = () => {}
            />
 
            <JobTabs 
-           
+             tabs={tabs}
+             activeTab={activeTab}
+             setAtiveTab={setAtiveTab}
            />
 
         </View>
